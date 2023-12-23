@@ -169,7 +169,7 @@ io.on("connection", (socket) => {
       code.set(data.room, { ...code.get(data.room), code: data.code })
 
       // Emit to the room users
-      io.to(data.room).emit("update_code", code.get(data.room));
+      io.to(data.room).except(socket.id).emit("update_code", code.get(data.room));
     }
     else {
       // send error messages to the user
@@ -186,7 +186,7 @@ io.on("connection", (socket) => {
       code.set(data.room, { ...code.get(data.room), lang: data.lang })
 
       // Emit to the room users
-      io.to(data.room).emit("update_lang", code.get(data.room));
+      io.to(data.room).except(socket.id).emit("update_lang", code.get(data.room));
     }
     else {
       // send error messages to the user
