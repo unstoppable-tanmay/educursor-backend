@@ -8,7 +8,7 @@ const httpServer = http.createServer();
 // configure the server
 const io = new Server(httpServer, {
   cors: {
-    origin: ["http://localhost:3000","https://edu-cursor.vercel.app/"],
+    origins: ["http://localhost:3000","https://edu-cursor.vercel.app/"],
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true,
